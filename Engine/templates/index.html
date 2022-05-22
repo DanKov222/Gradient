@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    details {
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        padding: .5em .5em 0;
+    }
+
+    summary {
+        font-weight: bold;
+        margin: -.5em -.5em 0;
+        padding: .5em;
+    }
+
+    details[open] {
+        padding: .5em;
+    }
+</style>
+
+<div class="form-control" style="display:flex; flex-direction: row;">
+    <form method="POST">
+        {% csrf_token %}
+        <label for="function">Ваша функция</label>
+        z = <input id="function" type="text" name="function">
+        <button type="submit">GO</button>
+    </form>
+        <summary>Формат ввода:</summary>
+    <br>
+        Функция должна содержать две переменный (х и у)<br>
+        Показатель степени переменной х должен быть больше 2<br>
+        Поддерживается использование функций sin() и cos() (Не до конца доработанно, могут быть проблеммы)<br>
+        Операции: ( + - * / ^ )<br>
+
+        Как результат вы получите локальные минимумы и минимум функции
+</div>
+
+{% if f_min %}
+<h4>X min ~ {{ x_min }}</h4>
+<h4>Y min ~ {{ x_min }}</h4>
+<h2>Минимум функции: {{ f_min }}</h2>
+{% endif %}
+</body>
+
+</html>
